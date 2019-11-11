@@ -1,6 +1,4 @@
 package com.shashank.platform.loginui;
-
-import android.Manifest;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
@@ -15,7 +13,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -25,10 +22,8 @@ import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-
 import org.json.JSONObject;
 
-import helpers.LogIn;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -39,7 +34,8 @@ public class MainActivity extends AppCompatActivity {
     protected Dialog OnDialog(Context c, String msg) {
         Dialog dialog = null;
         AlertDialog.Builder builder = new AlertDialog.Builder(c);
-        //builder = builder.setIcon(R.drawable)
+        //builder = builder.setIcon(R.drawable.ic_email_white_24dp);
+        builder = builder.setTitle("Error");
         builder = builder.setTitle(msg);
         dialog = builder.create();
 
@@ -62,13 +58,12 @@ public class MainActivity extends AppCompatActivity {
         btnLogIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                LogIn logIn = new LogIn();
 
                 EditText email = (EditText) findViewById(R.id.txtLogInUsr);
                 EditText pass = (EditText) findViewById(R.id.txtLogInPass);
                 if (email.getText().toString().trim().length() > 0 && pass.getText().toString().trim().length() > 0) {
-
-                    String url = String.format("http://10.0.2.2/unilab/home/ValidarAcceso?email=%1$s&pass=%2$s", email.getText().toString(), pass.getText().toString());
+                    String urlBase = getResources().getString(R.string.service_url);
+                    String url = String.format("%3$s/home/ValidarAcceso?email=%1$s&pass=%2$s", email.getText().toString(), pass.getText().toString(), urlBase);
 
                     RequestQueue requestQueue = Volley.newRequestQueue(MainActivity.this);
 
@@ -120,7 +115,6 @@ public class MainActivity extends AppCompatActivity {
                 final TextView textView = (TextView) findViewById(R.id.text);
             }
         });
-
 
         imageView.setOnTouchListener(new OnSwipeTouchListener(getApplicationContext()) {
             public void onSwipeTop() {
