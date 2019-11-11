@@ -3,8 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.shashank.platform.loginui.BuscarPersona">
     <item
-        android:id="@+id/action_settings"
-        android:orderInCategory="100"
+        android:id="@+id/buscadorPersonas"
+        android:icon="@android:drawable/ic_menu_search"
         android:title="@string/action_settings"
-        app:showAsAction="never" />
+        app:actionViewClass="android.support.v7.widget.SearchView"
+        app:showAsAction="always|collapseActionView"
+        >
+
+    </item>
 </menu>

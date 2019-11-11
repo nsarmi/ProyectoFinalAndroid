@@ -74,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
                             new Response.Listener<JSONObject>() {
                                 @Override
                                 public void onResponse(JSONObject response) {
+                                    try{
                                     Log.e("NSWS", "onResponse WS: " + response);
 
                                     Gson gson = new Gson();
@@ -87,6 +88,11 @@ public class MainActivity extends AppCompatActivity {
                                         finish();
                                     } else {
                                         OnDialog(MainActivity.this, "Datos Errados").show();
+                                    }
+                                    }
+                                    catch (Exception e){
+
+                                        Log.e("NSWS", "onResponse WS: " + e.getMessage());
                                     }
                                 }
                             },
