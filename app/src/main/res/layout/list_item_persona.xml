@@ -1,43 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="4dp"
 
-    <android.support.v7.widget.CardView
+    >
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:ignore="MissingConstraints">
-
-    </android.support.v7.widget.CardView>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        tools:ignore="MissingConstraints">
+        android:layout_height="match_parent"
+        android:padding="4dp"
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            tools:ignore="MissingConstraints">
 
             <TextView
-                android:id="@+id/lblSearchedUsrName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Usuario a seleccionar"
-                android:textAppearance="@style/TextAppearance.AppCompat.Title"></TextView>
-
-            <TextView
-                android:id="@+id/lblsearchedUsrDescription"
+                android:id="@+id/IdUsrSearch"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="Descripcion usuario"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"></TextView>
+                ></TextView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/lblSearchedUsrName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Usuario a seleccionar"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"></TextView>
+
+                <TextView
+                    android:id="@+id/lblsearchedUsrDescription"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Descripcion usuario"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"></TextView>
+
+            </LinearLayout>
 
         </LinearLayout>
-
-    </LinearLayout>
-</android.support.constraint.ConstraintLayout>
+    </RelativeLayout>
+</android.support.v7.widget.CardView>

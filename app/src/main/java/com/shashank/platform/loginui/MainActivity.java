@@ -1,4 +1,5 @@
 package com.shashank.platform.loginui;
+
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
@@ -13,6 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -22,7 +24,16 @@ import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.reflect.TypeToken;
+
 import org.json.JSONObject;
+
+import java.io.Serializable;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
+
+import Clases.Persona;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -74,23 +85,24 @@ public class MainActivity extends AppCompatActivity {
                             new Response.Listener<JSONObject>() {
                                 @Override
                                 public void onResponse(JSONObject response) {
-                                    try{
-                                    Log.e("NSWS", "onResponse WS: " + response);
+                                    try {
 
-                                    Gson gson = new Gson();
-                                    JsonElement jsonTree = gson.toJsonTree(response);
-                                    JsonObject jsonObject = jsonTree.getAsJsonObject();
-                                    String t = jsonObject.getAsJsonObject("nameValuePairs").get("Email").toString();
+                                        String jsonResponse = response.toString();
+                                        Persona persona = new Gson().fromJson(jsonResponse, Persona.class);
 
-                                    if (t != "") {
-                                        Intent i = new Intent(MainActivity.this, DashBoard.class);
-                                        startActivity(i);
-                                        finish();
-                                    } else {
-                                        OnDialog(MainActivity.this, "Datos Errados").show();
-                                    }
-                                    }
-                                    catch (Exception e){
+                                        Log.e("NSWS", "onResponse WS: " + response);
+
+                                        if (persona != null && persona.id > 0) {
+
+                                            Intent i = new Intent(MainActivity.this, PerfilActivity.class);
+                                            i.putExtra("UrsActualDTOjson", new Gson().toJson(persona));
+
+                                            startActivity(i);
+                                            finish();
+                                        } else {
+                                            OnDialog(MainActivity.this, "Datos Errados").show();
+                                        }
+                                    } catch (Exception e) {
 
                                         Log.e("NSWS", "onResponse WS: " + e.getMessage());
                                     }
