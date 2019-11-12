@@ -1,51 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardCornerRadius="4dp"
-
-    >
+    app:cardCornerRadius="4dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="4dp"
-        >
+        android:background="@drawable/grad"
+        android:layout_gravity="center"
+        android:gravity="center">
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:id="@+id/pr_layout2"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            tools:ignore="MissingConstraints">
+            android:padding="1dp"
+            >
 
-            <TextView
-                android:id="@+id/IdUsrSearch"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                ></TextView>
-
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:background="@drawable/grad_border"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp">
 
-                <TextView
-                    android:id="@+id/lblSearchedUsrName"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Usuario a seleccionar"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Title"></TextView>
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/lblsearchedUsrDescription"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="Descripcion usuario"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"></TextView>
+                    <TextView
+                        android:id="@+id/IdUsrSearch"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"></TextView>
 
-            </LinearLayout>
+                    <TextView
+                        android:id="@+id/lblSearchedUsrName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Nciolas sarmiento Niño"
+                        android:textColor="@color/white"
+                        android:textSize="18dp" />
+
+                </LinearLayout>
+            </RelativeLayout>
 
         </LinearLayout>
     </RelativeLayout>

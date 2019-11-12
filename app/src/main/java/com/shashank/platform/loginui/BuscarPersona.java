@@ -52,13 +52,12 @@ public class BuscarPersona extends AppCompatActivity implements SearchView.OnQue
     private List<Persona> LstPersonasAvailable = new ArrayList<>();
     private RecyclerView mRecyclerView;
     private PersonaBusquedaAdapter personaBusquedaAdapter;
-    private RecyclerView.LayoutManager mLayoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //String jsonPersona = getIntent().getExtras().getString("UrsActualDTOjson");
-        //currentUsr = new Gson().fromJson(jsonPersona, Persona.class);
+        String jsonPersona = getIntent().getExtras().getString("UrsActualDTOjson");
+        currentUsr = new Gson().fromJson(jsonPersona, Persona.class);
         setContentView(R.layout.activity_buscar_persona);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -88,7 +87,7 @@ public class BuscarPersona extends AppCompatActivity implements SearchView.OnQue
                             public void onClick(View view) {
                                 int pos = mRecyclerView.indexOfChild(view);
                                 Toast.makeText(BuscarPersona.this, "elemento clikeado : " + LstPersonasAvailable.get(pos).id, Toast.LENGTH_LONG).show();
-                                Intent i = new Intent(BuscarPersona.this, ReconocerActivity.class);
+                                Intent i = new Intent(BuscarPersona.this, DashBoard.class);
                                 i.putExtra("IdUsuarioDestino", LstPersonasAvailable.get(pos).id);
 
                                 startActivity(i);
@@ -109,16 +108,6 @@ public class BuscarPersona extends AppCompatActivity implements SearchView.OnQue
 
         requestQueue.add(jsonArrayRequest);
 
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(final View view) {
-                Intent i = new Intent(BuscarPersona.this, DashBoard.class);
-                i.putExtra("UrsActualDTOjson", new Gson().toJson(currentUsr));
-                i.putExtra("UrsSeleccionadoDTOjson", new Gson().toJson(selectedUsr));
-                startActivity(i);
-            }
-        });
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -139,15 +128,14 @@ public class BuscarPersona extends AppCompatActivity implements SearchView.OnQue
     @Override
     public boolean onQueryTextChange(String s) {
         try {
-            //TODO:Nsarmiento:cambiar el texto imput
-            final List<Persona> listaFiltradapersonas = filter(LstPersonasAvailable, "nico");
+            final List<Persona> listaFiltradapersonas = filter(LstPersonasAvailable, s);
 
             personaBusquedaAdapter.setClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     int pos = mRecyclerView.indexOfChild(view);
                     Toast.makeText(BuscarPersona.this, "elemento clikeado : " + listaFiltradapersonas.get(pos).id, Toast.LENGTH_LONG).show();
-                    Intent i = new Intent(BuscarPersona.this, ReconocerActivity.class);
+                    Intent i = new Intent(BuscarPersona.this, DashBoard.class);
                     i.putExtra("IdUsuarioDestino", listaFiltradapersonas.get(pos).id);
                     startActivity(i);
                 }

@@ -15,7 +15,6 @@ import java.util.List;
 
 import Clases.Persona;
 
-
 public class PersonaBusquedaAdapter extends RecyclerView.Adapter<PersonaBusquedaAdapter.ViewHolder> {
 
     List<Persona> lstPersonas;
