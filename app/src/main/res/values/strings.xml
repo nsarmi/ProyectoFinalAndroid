@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">RSUL - reconoce..</string>
+    <string name="app_name">RSUL</string>
     <string name="service_url">http://10.0.2.2/unilab</string>
     <string name="title_activity_buscar_persona">BuscarPersona</string>
     <string name="action_settings">Settings</string>
