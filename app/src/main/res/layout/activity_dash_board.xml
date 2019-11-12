@@ -32,7 +32,7 @@
         tools:context="com.demotxt.droidsrce.homedashboard.Home"
         android:orientation="vertical"
         android:padding="10dp"
-        android:background="#fcfcfc"
+        android:background="@drawable/grad"
         android:gravity="center"
         android:id="@+id/ll">
 
@@ -47,6 +47,7 @@
                 android:fontFamily="@font/gotham"
                 android:textSize="30dp"
                 android:gravity="center"
+                android:textColor="@color/white"
 
                 ></TextView>
         </LinearLayout>
@@ -70,6 +71,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
+                    android:background="#FFCDD2"
                     android:orientation="vertical">
 
                     <ImageView
@@ -115,14 +117,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
+                    android:background="#FFCDD2"
                     android:orientation="vertical">
 
                     <ImageView
                         android:layout_width="64dp"
                         android:layout_height="64dp"
-                        android:background="@drawable/ic_attach_money_black_24dp"
+                        android:background="@drawable/ic_email_white_24dp"
                         android:padding="10dp"
-                        android:src="@drawable/ic_attach_money_black_24dp" />
+                        android:src="@drawable/ic_email_white_24dp"  />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -166,6 +169,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
+                    android:background="#FFCDD2"
                     android:gravity="center">
                     <ImageView
                         android:layout_width="64dp"
@@ -208,6 +212,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
+                    android:background="#FFCDD2"
                     android:orientation="vertical">
 
                     <ImageView

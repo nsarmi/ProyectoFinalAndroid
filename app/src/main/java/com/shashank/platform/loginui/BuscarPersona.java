@@ -56,8 +56,10 @@ public class BuscarPersona extends AppCompatActivity implements SearchView.OnQue
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         String jsonPersona = getIntent().getExtras().getString("UrsActualDTOjson");
         currentUsr = new Gson().fromJson(jsonPersona, Persona.class);
+
         setContentView(R.layout.activity_buscar_persona);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -86,9 +88,12 @@ public class BuscarPersona extends AppCompatActivity implements SearchView.OnQue
                             @Override
                             public void onClick(View view) {
                                 int pos = mRecyclerView.indexOfChild(view);
-                                Toast.makeText(BuscarPersona.this, "elemento clikeado : " + LstPersonasAvailable.get(pos).id, Toast.LENGTH_LONG).show();
+                                //Toast.makeText(BuscarPersona.this, "elemento clikeado : " + LstPersonasAvailable.get(pos).id, Toast.LENGTH_LONG).show();
+
+                                selectedUsr = LstPersonasAvailable.get(pos);
                                 Intent i = new Intent(BuscarPersona.this, DashBoard.class);
-                                i.putExtra("IdUsuarioDestino", LstPersonasAvailable.get(pos).id);
+                                i.putExtra("UrsActualDTOjson", new Gson().toJson(currentUsr));
+                                i.putExtra("UrsDestinoDTOjson", new Gson().toJson(selectedUsr));
 
                                 startActivity(i);
                                 Log.e("NSOK", "Funciona esta jodaaaaa perro");
@@ -130,14 +135,17 @@ public class BuscarPersona extends AppCompatActivity implements SearchView.OnQue
         try {
             final List<Persona> listaFiltradapersonas = filter(LstPersonasAvailable, s);
 
+            personaBusquedaAdapter = new PersonaBusquedaAdapter(listaFiltradapersonas);
             personaBusquedaAdapter.setClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     int pos = mRecyclerView.indexOfChild(view);
-                    Toast.makeText(BuscarPersona.this, "elemento clikeado : " + listaFiltradapersonas.get(pos).id, Toast.LENGTH_LONG).show();
+                    selectedUsr = listaFiltradapersonas.get(pos);
                     Intent i = new Intent(BuscarPersona.this, DashBoard.class);
-                    i.putExtra("IdUsuarioDestino", listaFiltradapersonas.get(pos).id);
+                    i.putExtra("UrsActualDTOjson", new Gson().toJson(currentUsr));
+                    i.putExtra("UrsDestinoDTOjson", new Gson().toJson(selectedUsr));
                     startActivity(i);
+                    Log.e("NSOK", "Funciona esta jodaaaaa perro pero desde el adapter");
                 }
             });
             mRecyclerView.setAdapter(personaBusquedaAdapter);

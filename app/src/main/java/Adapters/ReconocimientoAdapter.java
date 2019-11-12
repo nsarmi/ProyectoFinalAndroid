@@ -26,13 +26,13 @@ public class ReconocimientoAdapter extends RecyclerView.Adapter<ReconocimientoAd
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.list_item_reconocimiento, viewGroup, false);
         ReconocimientoAdapter.ViewHolder holder = new ReconocimientoAdapter.ViewHolder(view);
-
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mClickListener.onClick(view);
-            }
-        });
+//
+//        holder.itemView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                mClickListener.onClick(view);
+//            }
+//        });
 
         return holder;
     }
