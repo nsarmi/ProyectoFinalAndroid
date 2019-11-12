@@ -83,10 +83,11 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/lblEstrellasrecibidas"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="546K"
                     android:textColor="@color/white"
+                    android:text="17K"
                     android:textSize="25dp" />
 
                 <TextView
@@ -116,16 +117,17 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/lblEstrellasEnviadas"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="546K"
+                    android:text="46K"
                     android:textColor="@color/white"
                     android:textSize="25dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Estrellas recividas"
+                    android:text="Estrellas recibidas"
                     android:textColor="@color/white"
                     android:textSize="13dp" />
 
@@ -160,7 +162,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/gotham"
-                    android:text="Estrellas recividas"
+                    android:text="Estrellas recibidas"
                     android:layout_marginLeft="65dp"
                     android:textColor="#C9000000"
                     android:textSize="20sp" />
